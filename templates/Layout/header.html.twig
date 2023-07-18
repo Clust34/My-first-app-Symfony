@@ -1,0 +1,36 @@
+<header class="sticky-top">
+	<nav class="navbar navbar-expand-sm navbar-dark bg-primary">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="{{ path('app.homepage') }}">My first App Symfony</a>
+			<button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="collapsibleNavId">
+				<ul class="navbar-nav me-auto mt-2 mt-lg-0">
+					<li
+						class="nav-item">
+						{# récupère la route actuelle et fait un ternaire pour le rendre dynamique #}
+						<a class="nav-link {{ app.request.get('_route') == 'app.homepage' ? 'active' }}" href="{{ path('app.homepage') }}">Home
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">Articles</a>
+					</li>
+				</ul>
+				<div class="navbar-nav ms-auto">
+					{% if app.user %}
+						{# si l'utilisateur est connecter, app contient toutes les infos connextion et autre #}
+						<a href="{{ path('app.logout')}}" class="btn btn-danger text-light">Se deconnecter</a>
+					{% else %}
+						<a href="{{ path('app.login')}}" class="btn btn-light">Se connecter</a>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+	</nav>
+</header>
+
+{# c'est un vardump
+{{ dump(app)}}
+toutes les variables disponible sur le twig
+{{ dump(_context) }} #}

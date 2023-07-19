@@ -1,0 +1,21 @@
+{# tu rajoute les class dans un tableau avec l'appel attr puis encore un autre tableau avec class #}
+{{ form_start(form, {'attr': {'class': 'form card p-3 mt-4 w-75 mx-auto'}}) }}
+{# Récupère dans le formulaire que le title #}
+{{ form_row(form.title) }}
+
+{# Me permet de mettre les deux sur une ligne #}
+<div class="row">
+	<div class="col-md-6">
+		{{ form_row(form.metaTitle) }}
+	</div>
+	<div class="col-md-6">
+		{{ form_row(form.metaDescription) }}
+	</div>
+</div>
+
+{{ form_row(form.content) }}
+{{ form_row(form.enable) }}
+<div class="text-center">
+	<button class="btn btn-primary" type="submit">Créer</button>
+</div>
+{{ form_end(form) }}

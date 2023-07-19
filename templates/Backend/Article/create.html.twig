@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Création d'un article
+	{{ parent() }}
+{% endblock %}
+
+{% block body %}
+	<section
+		class="container mt-4">
+		{# traduit le nom de page #}
+		<h1 class="text-center mb-4">{{ 'article.admin.heading.create'|trans(domain="content") }}</h1>
+		{% include 'Backend/Article/_form.html.twig' %}
+	</section>
+{% endblock %}

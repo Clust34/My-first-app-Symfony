@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{# Change le titre de l'onglet et la tu as Homepage et le parent vas chercher dans base.html
+						et le rajoute après #}
+	Homepage
+	{{ parent() }}
+{% endblock %}
+
+{% block body %}
+	<section class="container mt-4">
+		<h1 class="text-center mt-4 mb-4">Page d'accueil</h1>
+		{% for donnee in donnees %}
+			<h2 class="mb-4">Nom:
+				{{ donnee }}</h2>
+		{% endfor %}
+	</section>
+{% endblock %}

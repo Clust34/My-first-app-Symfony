@@ -2,3 +2,4 @@ article:
   admin:
     heading:
       create: "Create an Article"
+      edit: "Modificate an Article"

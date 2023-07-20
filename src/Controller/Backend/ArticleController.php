@@ -44,7 +44,7 @@ class ArticleController extends AbstractController
             // On attache l'article au user
             $article->setUser($this->getUser());
             // On peut envoyer en BDD
-            $this->articleRepo->save($article, true);
+            $this->articleRepo->save($article);
 
             $this->addFlash('success', 'Article créé avec succès');
 
@@ -53,6 +53,36 @@ class ArticleController extends AbstractController
         }
 
         return $this->render('Backend/Article/create.html.twig', [
+            'form' => $form
+        ]);
+    }
+
+    #[Route('/{id}/edit', name: '.edit', methods: ['GET', 'POST'])]
+    // Article vas chercher dans sa class pour chercher l'id
+    // Request c'est la requette HTTP
+    public function edit(?Article $article, Request $request): Response
+    {
+        // instanceof est ce que c'est une instance de la class article
+        // C'est pas un article
+        if (!$article instanceof Article) {
+            $this->addFlash('error', 'Article non trouvé');
+
+            return $this->redirectToRoute('admin.articles.index');
+        }
+
+        // ArticleType::class récupère la class et le namespace
+        $form = $this->createForm(ArticleType::class, $article);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->articleRepo->save($article);
+
+            $this->addFlash('success', 'Article mis à jour avec succès');
+
+            return $this->redirectToRoute('admin.articles.index');
+        }
+
+        return $this->render('Backend/Article/edit.html.twig', [
             'form' => $form
         ]);
     }

@@ -15,7 +15,9 @@
 
 {{ form_row(form.content) }}
 {{ form_row(form.enable) }}
-<div class="text-center">
-	<button class="btn btn-primary" type="submit">Créer</button>
+<div
+	class="text-center">
+	{# ca creer une variable et tu lui rajoute une valeur le pipe fait un filtre twig#}
+	<button class="btn btn-primary" type="submit">{{ buttonLabel|default('Save') }}</button>
 </div>
 {{ form_end(form) }}

@@ -41,6 +41,8 @@ class ArticleController extends AbstractController
 
         // Validation
         if ($form->isSubmitted() && $form->isValid()) {
+            // On attache l'article au user
+            $article->setUser($this->getUser());
             // On peut envoyer en BDD
             $this->articleRepo->save($article, true);
 

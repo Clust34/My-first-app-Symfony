@@ -1,0 +1,21 @@
+{# fais références au addFlash #}
+{% for flash in app.flashes('error') %}
+	<div class="alert alert-danger" role="alert">
+		<i class="bi bi-x-octagon-fill"></i>
+		{{ flash }}
+	</div>
+{% endfor %}
+
+{% for flash in app.flashes('success') %}
+	<div class="alert alert-success" role="alert">
+		<i class="bi bi-cloud-check-fill"></i>
+		{{ flash }}
+	</div>
+{% endfor %}
+
+{% for flash in app.flashes('info') %}
+	<div class="alert alert-info" role="alert">
+		<i class="bi bi-info-circle-fill"></i>
+		{{ flash }}
+	</div>
+{% endfor %}

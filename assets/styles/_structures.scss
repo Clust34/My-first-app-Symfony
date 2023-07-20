@@ -63,6 +63,11 @@
     font-weight: 300;
   }
   
+  img,
+  video,
+  figcaption {
+    max-width: 100%;
+  }
   .btn-primary {
     color: $white !important;
     background-color: $secondary;

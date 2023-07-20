@@ -1,0 +1,29 @@
+// Plus besoin de target et récreire tu peux mettre au parent etr tu entres l'enfants dedans
+
+// Dans vich-image tu cherche img
+.vich-image {
+    img{
+        // $border-radius est la variable définit dans _variables et importer dans admin.scss
+        border-radius: $border-radius;
+    }
+    // a{
+
+    // }
+}
+
+// // Tu peux imbriquer et le & reprend le nom du parent
+// .card {
+//     // cecie est une fonction avec les paramètre @include flexbox("row", 1em, center);
+//     background-color: red;
+//     display: flex;
+//     justify-content: center;
+//     gap: 1em;
+
+//     &-body{
+
+//     }
+
+//     &:hover{
+
+//     }
+// }

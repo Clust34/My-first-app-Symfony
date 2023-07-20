@@ -1,0 +1,23 @@
+<div class="blog-card">
+	<div
+		class="blog-card-img">
+		{# au cas ou il n'y as pas d'image #}
+		{% if article.imageName %}
+			{# fait le chemin tous seul #}
+			<img src="{{ vich_uploader_asset(article) }}" alt="{{ article.title }}" loading="lazy">
+		{% else %}
+			<img src="https://picsum.photos/300" alt="{{ article.title }}" loading="lazy">
+		{% endif %}
+	</div>
+	<div
+		class="blog-card-content">
+		{# On met | car on ne peut pas faire un echo d'un objet datetime donc il lui faut un filtre, full il met en caractere, short que les chiffre, le deuxieme parametre c'est l'heure donc on la veut pas #}
+		<p class="blog-card-content-date">
+			<i class="bi bi-calendar2-week-fill"></i>
+			{{ article.createdAt|format_datetime('full', 'none') }}
+		</p>
+		<h2 class="blog-card-content-title">{{ article.title|sanitize_html }}</h2>
+		<p class="bolg-card-content-desc">{{ article.content|slice(0, 150)|sanitize_html }}...</p>
+		<p class="blog-card-content-autor">{{ article.user.fullName }}</p>
+	</div>
+</div>
